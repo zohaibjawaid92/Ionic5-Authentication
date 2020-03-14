@@ -1,0 +1,66 @@
+
+<ion-content fullscreen>
+  <div class="login-logo">
+    <img src="assets/img/logo.jpg" style="margin:35px" alt="Ionic logo">
+  </div>
+
+  <form #loginForm="ngForm" novalidate>
+    <ion-list>
+      <ion-item>
+
+        <ion-label style="color: #000;" position="stacked">What you are?</ion-label>
+        <ion-select ok-text="OK" cancel-text="Cancel">
+          <ion-select-option value="admin">Admin</ion-select-option>
+          <ion-select-option value="user">User</ion-select-option>
+          <!-- <ion-icon name="person-outline" slot="end"></ion-icon> -->
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label style="color: #000;" position="stacked">Username</ion-label>
+        <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+          required>
+          <!-- <ion-icon name="mail-outline"></ion-icon> -->
+        </ion-input>
+      </ion-item>
+
+      <ion-text color="danger">
+        <p [hidden]="username.valid || submitted == false" class="ion-padding-start">
+          Username is required
+        </p>
+      </ion-text>
+
+      
+      <ion-item>
+        <ion-label style="color: #000;" position="stacked">Password</ion-label>
+        <ion-input style="margin-left: 7px;" [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+          <!-- <ion-icon name="key" item-start class="text-primary"></ion-icon> -->
+        </ion-input>
+      </ion-item>
+
+      <ion-text color="danger">
+        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+          Password is required
+        </p>
+      </ion-text>
+
+      <ion-text color="danger">
+        <p style="text-align: end;color: #000;" class="ion-padding-end">
+          Forgot Password?
+        </p>
+      </ion-text>
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-button class="btn-color" (click)="onLogin(loginForm)" type="submit" expand="full">Login</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-text color="danger">
+      <p style="text-align: center;color: #fc7311;" class="ion-padding-end">
+        Not have an account?
+      </p>
+    </ion-text>
+  </form>
+
+</ion-content>
